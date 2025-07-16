@@ -1,190 +1,165 @@
-console.log("Hello");
-function multiplication(a: number, b: number) {
-  return a * b;
-}
-console.log(multiplication(3, 4));
+// ################################# set variable type #################################
+let a: number;
 
-// normal variable
-let a: string | number;
+let b: number;
 
-// array union
-let b: (string | number)[] = [];
+a = 20;
 
-b.push(1, 2);
+b = 401;
 
-console.log("b", b);
+console.log("Assign Variable", a, b);
 
-a = 5;
-a = "str";
+// ################################# declare variable union type union type #################################
+let c: string | number;
 
-// dynamic type
+c = 10;
 
-let c: any; // kub thekai na porle ata use kora thik na
+console.log("Union Number C", c);
 
-c = 5;
+c = "Union type string";
 
-c = "Str";
+console.log("Union type string", c);
 
-let anyTypeOfArray: any[] = [];
+// ################################# declare an array and set type #################################
+let arr: (string | number)[] = [];
 
-anyTypeOfArray.push("Arr");
+arr.push("Akash");
 
-anyTypeOfArray.push(290);
+arr.push(2000);
 
-// any type of object
+console.log("Array", arr);
 
-let anyTypeOfObject: {
-  name: any;
-  age: any;
+// ############################## declare a object and set type #################################
+let obj: Object;
+
+obj = {
+  name: "foysal",
 };
 
-anyTypeOfObject = {
-  name: "Bangladesh",
-  age: 34,
+console.log("Object", obj);
+
+// ################################# declare a object and set type #################################
+let object: {
+  name: string;
+  id: number | string;
+  isActive: boolean;
 };
 
-// lesson function type
-
-const myFunc: Function = (f1: number, f2: number) => {
-  return f1 + f2;
+object = {
+  name: "Foysal",
+  id: 10,
+  isActive: true,
 };
 
-console.log("myfunc", myFunc(100, 50));
+console.log("Object", object);
+
+// ################################# you can assign a object but assign array #################################
+
+let objectArray: Object;
+
+objectArray = [10, 20, 30, "Akash"];
+
+console.log(objectArray);
+
+// Note: why can I declare a object but use an array?
+
+// Ans: Because, Array is a certain type of object.
+
+// ################################# function type #################################
+
+// declare a function and set parameter data type
+const multiplication = (arg1: number, arg2: number) => {
+  return arg1 * arg2;
+};
+
+console.log("multiplication", multiplication(5, 30));
+
+// declare a function and set data union type
+const textFunc = (arg1: number | string, arg2: number | string) => {
+  console.log("Function parameter union type", arg1, arg2);
+};
+
+textFunc("Hello", 20);
 
 // optional function parameter
-const opFunc = (f1: number, f2: number, f3?: number) => {
-  return f1 * f2;
+const optionalFunc = (arg1: number, arg2: number, arg3?: string) => {
+  return {
+    var: arg1 + arg2,
+    string: arg3,
+  };
 };
 
-console.log("Optional parameter", opFunc(20, 3));
+console.log("optionalFunc", optionalFunc(10, 20));
 
-// default function parameter
-const defaultFunc = (f1: number, f2: number, f3: number = 10) => {
-  return f1 * f2;
+// function signature
+
+let signatureFunc: (arg1: string, arg2: string) => void;
+
+signatureFunc = (arg1: string, arg2: string) => {
+  return {
+    arg1: arg1,
+    arg2: arg2,
+  };
 };
 
-console.log("Optional parameter", defaultFunc(20, 3));
+console.log("signature function", signatureFunc("Foysal", "Mahmood"));
 
-// type alias
+// conditional signature
+let conditionalSignature: (arg1: number, arg2: number, arg3?: string) => number;
 
-type stringOrNumber = string | number;
-type useType = { name: string; age: number };
-
-const useDetails = (id: stringOrNumber, user: useType) => {
-  console.log(`user id is ${id}, name is ${user.name} and age is ${user.age}`);
-};
-
-const sayHello = (user: useType) => {
-  console.log(`Hello ${user.age > 50 ? "sir" : "Mr."} ${user.name}`);
-};
-
-// function signatures
-
-let myFungSig: (x: number, y: number) => number;
-
-myFungSig = (a, b) => {
-  return a + b;
-};
-
-let calculation: (x: number, y: number, c: string) => number;
-
-// complex example
-
-calculation = (a: number, b: number, c: string) => {
+conditionalSignature = (a: number, b: number, c?: string) => {
   if (c == "add") {
     return a + b;
   } else {
-    return a * b;
+    return a - b;
   }
 };
 
-calculation(5, 6, "add");
+console.log("Conditional sign function", conditionalSignature(1, 3));
 
-console.log("calculation", calculation);
-
-let useInfo: (
-  id: number | string,
+// complex example
+let userData: (
+  id: string | number,
   info: {
     name: string;
     age: number;
   }
 ) => void;
 
-useInfo = (
-  id: number | string,
-  info: {
+userData = (
+  userId: string | number,
+  userInfo: {
     name: string;
     age: number;
   }
-) => {};
+) => {
+  return {
+    userId,
+    userInfo,
+  };
+};
 
-// Classes
+// type alias
 
-class Player {
-  name: string;
-  age: number;
-  country: string;
+type stringNum = string | number;
 
-  constructor(n: string, a: number, c: string) {
-    this.name = n;
-    (this.age = a), (this.country = c);
+type objS = { name: string; age: number };
+
+// complex example
+let userInfo: (
+  id: stringNum,
+  dtl: {
+    name: string;
+    age: number;
   }
+) => void;
 
-  play() {
-    console.log(`${this.name} from ${this.country} is playing!`);
-  }
-}
-
-const mashrafi = new Player("Mashrafi", 2, "Bangladesh");
-const shakib = new Player("Mashrafi", 75, "Bangladesh");
-
-const players: Player[] = [];
-
-players.push(shakib);
-players.push(mashrafi);
-
-// Access Modifiers
-class Player2 {
-  public name: string;
-  private age: number;
-  readonly country: string;
-
-  constructor(n: string, a: number, c: string) {
-    this.name = n;
-    (this.age = a), (this.country = c);
-  }
-
-  play() {
-    console.log(`${this.name} from ${this.country} is playing!`);
-  }
-}
-
-const mashrafi2 = new Player2("Mashrafi", 2, "Bangladesh");
-const shakib2 = new Player2("Mashrafi", 75, "Bangladesh");
-
-const players2: Player2[] = [];
-
-players2.push(shakib2);
-players2.push(mashrafi2);
-
-// bahire theke access kora jabe na
-
-class Player3 {
-  constructor(
-    public name: string,
-    private age: number,
-    readonly country: string
-  ) {}
-
-  play() {
-    console.log(`${this.name} from ${this.country} is playing!`);
-  }
-}
-
-const mashrafi3 = new Player2("Mashrafi", 2, "Bangladesh");
-const shakib3 = new Player2("Mashrafi", 75, "Bangladesh");
-
-const players3: Player2[] = [];
-
-players2.push(shakib3);
-players2.push(mashrafi3);
+userData = (
+  userId: string | number,
+  dtl: objS
+) => {
+  return {
+    userId,
+    dtl,
+  };
+};

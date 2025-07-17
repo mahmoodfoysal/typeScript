@@ -104,3 +104,18 @@ const mashrafi = new player("Mashrafi", 40, "Bangladesh");
 const shakib = new player("Shakib", 38, "Bangladesh");
 const players = [];
 players.push(shakib);
+// ################################# Access Modifier #################################
+class player2 {
+    constructor(name, age, country) {
+        this.name = name;
+        this.age = age;
+        this.country = country;
+    }
+    play() {
+        console.log(`${this.name} from ${this.age} ${this.country} is playing`);
+    }
+}
+const pilot = new player("Mashrafi", 40, "Bangladesh");
+const sabbir = new player("Shakib", 38, "Bangladesh");
+const players2 = [];
+players2.push(shakib);

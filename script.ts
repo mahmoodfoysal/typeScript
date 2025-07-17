@@ -146,6 +146,7 @@ type stringNum = string | number;
 type objS = { name: string; age: number };
 
 // complex example
+
 let userInfo: (
   id: stringNum,
   dtl: {
@@ -184,3 +185,25 @@ const shakib = new player("Shakib", 38, "Bangladesh");
 const players: player[] = [];
 
 players.push(shakib);
+
+// ################################# Access Modifier #################################
+
+class player2 {
+  constructor(
+    private name: string,
+    public age: number,
+    readonly country: string
+  ) {}
+
+  play() {
+    console.log(`${this.name} from ${this.age} ${this.country} is playing`);
+  }
+}
+
+const pilot = new player("Mashrafi", 40, "Bangladesh");
+
+const sabbir = new player("Shakib", 38, "Bangladesh");
+
+const players2: player[] = [];
+
+players2.push(shakib);

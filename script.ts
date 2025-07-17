@@ -154,12 +154,33 @@ let userInfo: (
   }
 ) => void;
 
-userData = (
-  userId: string | number,
-  dtl: objS
-) => {
+userData = (userId: string | number, dtl: objS) => {
   return {
     userId,
     dtl,
   };
 };
+
+// ################################# classes #################################
+
+class player {
+  name: string;
+  age: number;
+  country: string;
+
+  constructor(n: string, a: number, c: string) {
+    (this.name = n), (this.age = a), (this.country = c);
+  }
+
+  play() {
+    console.log(`${this.name} from ${this.age} ${this.country} is playing`);
+  }
+}
+
+const mashrafi = new player("Mashrafi", 40, "Bangladesh");
+
+const shakib = new player("Shakib", 38, "Bangladesh");
+
+const players: player[] = [];
+
+players.push(shakib);

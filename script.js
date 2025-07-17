@@ -91,3 +91,16 @@ userData = (userId, dtl) => {
         dtl,
     };
 };
+// ################################# classes #################################
+class player {
+    constructor(n, a, c) {
+        (this.name = n), (this.age = a), (this.country = c);
+    }
+    play() {
+        console.log(`${this.name} from ${this.age} ${this.country} is playing`);
+    }
+}
+const mashrafi = new player("Mashrafi", 40, "Bangladesh");
+const shakib = new player("Shakib", 38, "Bangladesh");
+const players = [];
+players.push(shakib);
